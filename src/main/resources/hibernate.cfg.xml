@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- 1. CONFIGURAÇÕES DE CONEXÃO (Onde está o banco?) -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernete-jpa</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">admin</property>
+
+        <!-- 2. DIALETO (Como o Hibernate deve "falar" com o Postgres) -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- 3. CONFIGURAÇÕES DE LOG E DEBUG (Ver o que está acontecendo) -->
+        <!-- Mostra o SQL gerado no console -->
+        <property name="show_sql">true</property>
+        <!-- Deixa o SQL no console bonitinho e legível -->
+        <property name="format_sql">true</property>
+        <!-- Coloca cores no SQL do console (Hibernate 6+) -->
+        <property name="highlight_sql">true</property>
+
+        <!-- 4. ESTRUTURA DO BANCO (Criação automática de tabelas) -->
+        <!-- 'update' cria ou altera as tabelas automaticamente sem apagar seus dados -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- 5. MAPEAMENTO (Quais classes são tabelas?) -->
+        <!-- Você deve adicionar uma linha dessa para cada classe @Entity que criar -->
+        <mapping class="org.hibernetejpa.models.Usuario"/>
+        <mapping class="org.hibernetejpa.models.Veiculo"/>
+
+    </session-factory>
+</hibernate-configuration>
