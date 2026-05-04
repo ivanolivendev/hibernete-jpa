@@ -31,6 +31,12 @@
         <!-- Você deve adicionar uma linha dessa para cada classe @Entity que criar -->
         <mapping class="org.hibernetejpa.models.Usuario"/>
         <mapping class="org.hibernetejpa.models.Veiculo"/>
+        <mapping class="org.hibernetejpa.models.Funcionario"/>
+        <mapping class="org.hibernetejpa.models.Projeto"/>
+        <mapping class="org.hibernetejpa.models.VeiculoHeranca"/>
+        <mapping class="org.hibernetejpa.models.VeiculoDuasRodas"/>
+        <mapping class="org.hibernetejpa.models.VeiculoQuatrorodas"/>
+
 
     </session-factory>
 </hibernate-configuration>

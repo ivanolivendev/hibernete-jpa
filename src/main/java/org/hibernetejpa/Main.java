@@ -6,9 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernetejpa.enums.EstadoCivil;
-import org.hibernetejpa.models.Endereco;
-import org.hibernetejpa.models.Usuario;
-import org.hibernetejpa.models.Veiculo;
+import org.hibernetejpa.models.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -37,7 +35,15 @@ public class Main {
         brasilia.setModelo("brasilia");
         brasilia.setAno(1999);
 
+        Funcionario func_ivan = new Funcionario();
+        func_ivan.setName(" Funcionário Ivan");
+        func_ivan.setSalario(20.000);
 
+        Projeto projeto01 = new Projeto();
+        projeto01.setNome("Projeto 01");
+        projeto01.getFuncionarios().add(func_ivan);
+
+        func_ivan.getProjetos().add(projeto01);
 
 
          Usuario ivan = new Usuario();
@@ -54,6 +60,28 @@ public class Main {
 
         fusca.setUsuario(ivan);
         brasilia.setUsuario(ivan);
+
+        VeiculoQuatrorodas carro = new VeiculoQuatrorodas();
+        carro.setQuantidadePortas(4);
+        carro.setAno(1999);
+        carro.setMarca("Marca Generica Carro");
+        carro.setModelo("Modelo Generico Carro");
+        carro.setQuantidadePortas(2);
+
+        VeiculoDuasRodas moto = new VeiculoDuasRodas();
+        moto.setCilindradas(200);
+        moto.setAno(2000);
+
+        moto.setMarca("Susuki");
+
+        carro.setQuantidadePortas(2);
+        carro.setAno(200);
+        carro.setMarca("Marca Generica Moto");
+        carro.setModelo("Modelo Generico Moto");
+
+
+
+
 
 
 
@@ -80,6 +108,10 @@ public class Main {
 
                 //ession.persist(fusca);
                 session.persist(ivan);
+                session.persist(func_ivan);
+                session.persist(projeto01);
+                session.persist(carro);
+                session.persist(moto);
 
                 // 4. Finaliza a transação
                 t.commit();
